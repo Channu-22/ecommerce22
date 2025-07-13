@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import instance from "../axiosConfig"
-// import Header from "../components/Header";
-// import Footer from "../components/Footer";
+
 
 function Products() {
     const [products, setProducts] = useState([]);
