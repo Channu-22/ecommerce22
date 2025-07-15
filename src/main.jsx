@@ -6,9 +6,9 @@ import Products from './pages/Home.jsx'
 import Router from './Router.jsx'
 
 createRoot(document.getElementById('root')).render(
- 
     // <App />
-    // <Products />
+   // <Products />
+
     <Router/>
   
-)
+);

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import instance from "../axiosConfig"
+import { Link } from "react-router-dom";
+
 
 
 function Products() {
@@ -26,7 +28,7 @@ function Products() {
         return (
             <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100 flex items-center justify-center">
                 <div className="text-center">
-                    <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <div className="w-30 h-30 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                     <p className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                         Loading amazing products...
                     </p>
@@ -82,14 +84,18 @@ function Products() {
                                     </div>
 
                                     {/* Product Image */}
-                                    <div className="productImage h-64 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 relative">
-                                        <img 
+                                    <Link to={`/product/${product.id}`}> 
+                                     <div className="productImage h-64 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 relative">
+                                       
+                                          <img 
                                             src={product.image} 
                                             alt={product.title || "Product Image"} 
                                             className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 p-4"
-                                        />
+                                           />
+                                        
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    </div>
+                                     </div>
+                                    </Link>
 
                                     {/* Product Content */}
                                     <div className="productContent p-6">

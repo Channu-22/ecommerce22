@@ -6,6 +6,8 @@ import Contact from "./pages/Contact.jsx"
 import Cart from "./pages/Cart.jsx"
 import WishList from "./pages/WishList.jsx"
 import Login from "./pages/Login.jsx"
+import NotFound from "./pages/NotFound.jsx"
+import SingleProduct from "./pages/SingleProduct.jsx"
 
 
 const router=createBrowserRouter([
@@ -36,11 +38,16 @@ const router=createBrowserRouter([
             {
                 path:"/login",
                 element:<Login/>
+            },
+            {
+                path:"/product/:id",
+                element:<SingleProduct/>
+            },
+            {
+                path:"*",
+                element:<NotFound/>
             }
         ]
-
-
-
     }
 
 ]);
@@ -48,7 +55,6 @@ const router=createBrowserRouter([
 function Router(){
     return (
         <RouterProvider router={router}/>
-    
     )
 }
 
