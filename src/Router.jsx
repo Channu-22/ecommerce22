@@ -8,6 +8,9 @@ import WishList from "./pages/WishList.jsx"
 import Login from "./pages/Login.jsx"
 import NotFound from "./pages/NotFound.jsx"
 import SingleProduct from "./pages/SingleProduct.jsx"
+import CartProvider from "./Contexts/CartContext.jsx"
+// import CartProvider from "./Contexts/CartProvider"
+
 
 
 const router=createBrowserRouter([
@@ -54,8 +57,10 @@ const router=createBrowserRouter([
 
 function Router(){
     return (
-        <RouterProvider router={router}/>
-    )
+        <CartProvider>
+            <RouterProvider router={router}/>
+        </CartProvider>
+    );
 }
 
 export default Router;

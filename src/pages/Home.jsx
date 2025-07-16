@@ -15,7 +15,7 @@ function Products() {
     async function getdata() {
         try {
             setLoading(true);
-            const response = await instance.get("/products");
+            const response = await instance.get("/products?limit=25");
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);

@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import instance from "../axiosConfig";
+import { cartContext } from "../Contexts/CartContext";
 
 function SingleProduct() {
+  // useParams give dynamic part of url
   const { id } = useParams();
+
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
+
+  const {handleAddToCart} = useContext(cartContext)
+  
   // console.log(id)
   useEffect(() => {
     getSingleProduct(id);
@@ -23,14 +29,18 @@ function SingleProduct() {
       setLoading(false);
     }
   }
-  //   console.log(product);
+ 
+
+
+  
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100 flex items-center justify-center">
         <div className="text-center">
           <div className="w-30 h-30 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Loading single product...
+            Loading product...
           </p>
         </div>
       </div>
@@ -108,7 +118,8 @@ function SingleProduct() {
           </div>
 
           <div className="flex flex-wrap gap-4 mt-6">
-            <button className="cursor-pointer bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            <button className="cursor-pointer bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            onClick={() => handleAddToCart(product)}>
               Add to Cart
             </button>
 

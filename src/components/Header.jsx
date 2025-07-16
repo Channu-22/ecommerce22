@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MdOutlineShoppingCart, MdMenu, MdClose } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { cartContext } from "../Contexts/CartContext";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const {cart} = useContext(cartContext)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -42,7 +45,7 @@ function Header() {
             <Link to="/cart" className="relative flex items-center">
               <MdOutlineShoppingCart title="Your Cart" className="text-2xl" />
               <span className="absolute -top-3 -right-3 bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
-                0
+                {cart.length}
               </span>
             </Link>
           </li>
