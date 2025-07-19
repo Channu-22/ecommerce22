@@ -17,7 +17,7 @@ function Header() {
     <>
       <header className="bg-rose-400 h-16 px-6 md:px-12 flex justify-between items-center relative">
         <h1 className="font-bold text-2xl md:text-3xl">
-          <Link to="/">Ecommerce</Link>
+          <Link to="/">🛍️Ecommerce</Link>
         </h1>
         
         {/* Desktop Navigation - Hidden on mobile */}
@@ -87,33 +87,33 @@ function Header() {
                   Contact
                 </a>
               </li>
-              <li className="border-b border-rose-300 last:border-b-0">
+              <li className="relative border-b border-rose-300 last:border-b-0">
                 <a 
-                  href="/wishlist" 
+                  // href="/wishlist" 
                   className="flex items-center justify-between px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >
                   <span className="flex items-center space-x-2">
                     <AiOutlineHeart className="text-xl" />
-                    <span>Wishlist</span>
+                    {/* <span>Wishlist</span> */}
                   </span>
-                  <span className="bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
-                    0
+                  <span className="absolute -top-0 left-10 bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
+                    0 
                   </span>
                 </a>
               </li>
-              <li className="border-b border-rose-300 last:border-b-0">
+              <li className="relative border-b border-rose-300 last:border-b-0">
                 <a 
-                  href="/cart" 
+                  // href="/cart" 
                   className="flex items-center justify-between px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >
                   <span className="flex items-center space-x-2">
                     <MdOutlineShoppingCart className="text-xl" />
-                    <span>Cart</span>
+                    {/* <span>Cart</span> */}
                   </span>
-                  <span className="bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
-                    0
+                  <span className="absolute -top-0 left-10 bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
+                    {cart.length}
                   </span>
                 </a>
               </li>

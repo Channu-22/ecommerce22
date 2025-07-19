@@ -2,6 +2,7 @@ import  { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import instance from "../axiosConfig";
 import { cartContext } from "../Contexts/CartContext";
+import Toast from "../messages/Cartmsg";
 
 function SingleProduct() {
   // useParams give dynamic part of url
@@ -10,7 +11,7 @@ function SingleProduct() {
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const {handleAddToCart} = useContext(cartContext)
+  const {handleAddToCart, toastMessage} = useContext(cartContext)
   
   // console.log(id)
   useEffect(() => {
@@ -29,6 +30,7 @@ function SingleProduct() {
       setLoading(false);
     }
   }
+  // console.log(product)
  
 
 
@@ -122,6 +124,7 @@ function SingleProduct() {
             onClick={() => handleAddToCart(product)}>
               Add to Cart
             </button>
+            {toastMessage && <Toast message={toastMessage} />}
 
             <button className="cursor-pointer bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
               Add to Wishlist

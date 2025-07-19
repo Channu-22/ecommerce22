@@ -15,7 +15,7 @@ function Products() {
     async function getdata() {
         try {
             setLoading(true);
-            const response = await instance.get("/products?limit=25");
+            const response = await instance.get("/products?limit=150");
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -124,7 +124,7 @@ function Products() {
                                             </span>
                                         </div>
 
-                                        <button className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300 transform hover:scale-105 shadow-lg hover:shadow-xl group relative overflow-hidden">
+                                        {/* <button className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300 transform hover:scale-105 shadow-lg hover:shadow-xl group relative overflow-hidden">
                                             <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                                             <span className="relative flex items-center justify-center space-x-3">
                                                 <svg className="w-5 h-5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
@@ -135,7 +135,7 @@ function Products() {
                                                     <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6-6 6-1.41-1.41z"/>
                                                 </svg>
                                             </span>
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                             )

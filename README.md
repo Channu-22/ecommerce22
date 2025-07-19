@@ -1,12 +1,66 @@
-<!-- # React + Vite
+<!-- import { createContext, useState } from "react";
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+export const cartContext = createContext();
 
-Currently, two official plugins are available: -->
+function CartProvider({ children }) {
+  const [cart, setCart] = useState([]);
+  const [toastMessage, setToastMessage] = useState('');
 
-<!-- - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  function handleAddToCart(product) {
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find((item) => item.id === product.id);
 
-## Expanding the ESLint configuration
+      if (existingProduct) {
+        setToastMessage(`${product.category} added to cart`);
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        setToastMessage(`${product.category} added to cart`);
+        return [...prevCart, { ...product, quantity: 1 }];
+      }
+    });
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project. -->
+    // Auto-hide toast after 2 seconds
+    setTimeout(() => setToastMessage(''), 2000);
+  }
+  function Toast({ message }) {
+    return (
+       <div className="fixed top-6 right-6 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-bounce">
+         {message}
+      </div>
+    );
+  }
+
+  const handleQuantityChange = (productId, type) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === productId) {
+        if (type === "increment") {
+          return { ...item, quantity: item.quantity + 1 };
+        } else if (type === "decrement" && item.quantity > 1) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+      }
+      return item;
+    });
+
+    setCart(updatedCart);
+  };
+
+  const handleDeleteItem=(itemToDelete) => {
+    const updatedCart=cart.filter(item => itemToDelete !== item.id);
+    setCart(updatedCart);
+  };
+
+
+
+  return (
+    <cartContext.Provider value={{ cart, setCart, handleAddToCart, toastMessage ,handleQuantityChange,handleDeleteItem }}>
+      {children}
+    </cartContext.Provider>
+  );
+}
+
+export default CartProvider; -->
