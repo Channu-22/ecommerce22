@@ -1,20 +1,20 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import app from "../firebase";
+import { Link } from "react-router-dom";
 
 const auth = getAuth(app);
 
-function Login() {
+function Register() {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+
   const [message, setMessage] = useState({
     type: "",
     text: "",
   });
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,11 +24,13 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, form.email, form.password);
-      setMessage({ type: "success", text: "Login successful!" });
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
+      const userDetails = await createUserWithEmailAndPassword(
+        auth,
+        form.email,
+        form.password
+      );
+      const user = userDetails.user;
+      setMessage({ type: "success", text: "Account created successfully! 🎉" });
     } catch (error) {
       setMessage({ type: "error", text: error.message });
     }
@@ -42,7 +44,7 @@ function Login() {
 
       <div className="relative bg-white/80 backdrop-blur-lg p-8 rounded-2xl shadow-xl w-full max-w-md transition-all duration-500 hover:shadow-2xl">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8 tracking-tight drop-shadow-sm">
-          Login
+          Register
         </h2>
 
         {message.text && (
@@ -101,17 +103,17 @@ function Login() {
             type="submit"
             className="cursor-pointer w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 rounded-xl font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-[1.03] active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
           >
-            Login
+            Register
           </button>
         </form>
 
         <p className="mt-6 text-center text-gray-600 text-sm font-medium">
-          Don't have an account?{" "}
+          Already have an account?{" "}
           <Link
-            to="/register"
+            to="/login"
             className="relative inline-block px-4 py-1.5 text-purple-700 font-semibold bg-purple-100 rounded-full hover:bg-purple-200 hover:text-purple-900 transition-all duration-300 transform hover:scale-105 cursor-pointer group shadow-md"
           >
-            <span className="relative z-10">Register</span>
+            <span className="relative z-10">Login</span>
             <span className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-sm"></span>
             <span className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-purple-300 transition duration-300 animate-pulse"></span>
           </Link>
@@ -121,4 +123,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

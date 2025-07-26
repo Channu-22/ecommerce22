@@ -5,10 +5,12 @@ import About from "./pages/About.jsx"
 import Contact from "./pages/Contact.jsx"
 import Cart from "./pages/Cart.jsx"
 import WishList from "./pages/WishList.jsx"
+// import Register from "./pages/Register.jsx"
 import Login from "./pages/Login.jsx"
 import NotFound from "./pages/NotFound.jsx"
 import SingleProduct from "./pages/SingleProduct.jsx"
 import CartProvider from "./Contexts/CartContext.jsx"
+import Register from "./pages/Register.jsx"
 // import CartProvider from "./Contexts/CartProvider"
 
 
@@ -37,6 +39,11 @@ const router=createBrowserRouter([
             {
                 path:"/WishList",
                 element:<WishList/>
+            },
+            {
+                path:"/register",
+                element:<Register/>
+
             },
             {
                 path:"/login",
