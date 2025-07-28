@@ -1,17 +1,38 @@
 import { useContext, useState } from "react";
-import { MdOutlineShoppingCart, MdMenu, MdClose } from "react-icons/md";
-import { AiOutlineHeart } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { cartContext } from "../Contexts/CartContext";
 
+import { MdOutlineShoppingCart, MdMenu, MdClose } from "react-icons/md";
+import { BsFillPersonLinesFill } from "react-icons/bs";
+import { MdLogout } from "react-icons/md";
+import { RiLogoutBoxRFill } from "react-icons/ri";
+import { AiOutlineHeart } from "react-icons/ai";
+
+import { LogOut, UserRound, CircleUserRound } from "lucide-react"; 
+
+import { Link, useNavigate } from "react-router-dom";
+import { cartContext } from "../Contexts/CartContext";
+import { useAuth } from "../Contexts/AuthProvider";
+import app from "../firebase";
+import { getAuth } from "firebase/auth";
+
+const Auth = getAuth(app);
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const {cart} = useContext(cartContext)
+  const { cart } = useContext(cartContext);
+
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  function HandleLoggedOut() {
+    Auth.signOut();
+    setTimeout(() => {
+      navigate("/login");
+    }, 1000);
+  }
 
   return (
     <>
@@ -19,19 +40,19 @@ function Header() {
         <h1 className="font-bold text-2xl md:text-3xl">
           <Link to="/">🛍️Ecommerce</Link>
         </h1>
-        
+
         {/* Desktop Navigation - Hidden on mobile */}
         <ul className="hidden md:flex items-center space-x-8">
-          <li className="cursor-pointer hover:text-white transition-colors">
+          {/* <li className="cursor-pointer hover:text-white transition-colors">
             <Link to="/">Home</Link>
-          </li>
+          </li> */}
           <li className="cursor-pointer hover:text-white transition-colors">
             <Link to="/about">About</Link>
           </li>
           <li className="cursor-pointer hover:text-white transition-colors">
             <Link to="/contact">Contact</Link>
           </li>
-          
+
           <li className="cursor-pointer relative hover:text-white transition-colors">
             <Link to="/wishlist" className="relative flex items-center">
               <AiOutlineHeart title="Your Wishlist" className="text-2xl" />
@@ -40,7 +61,7 @@ function Header() {
               </span>
             </Link>
           </li>
-          
+
           <li className="cursor-pointer relative hover:text-white transition-colors">
             <Link to="/cart" className="relative flex items-center">
               <MdOutlineShoppingCart title="Your Cart" className="text-2xl" />
@@ -49,16 +70,35 @@ function Header() {
               </span>
             </Link>
           </li>
-          
+
           <li className="cursor-pointer hover:text-white transition-colors">
-            <Link to="/login" className="bg-white text-rose-400 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            {/* <Link to="/login" className="bg-white text-rose-400 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
               Login
-            </Link>
+            </Link> */}
+            {/* import { LogOut, UserRound } from "lucide-react"; */}
+
+            {user ? (
+              <button
+                onClick={HandleLoggedOut}
+                title="Logout"
+                className="text-xl text-black hover:text-red-500 transition-colors duration-300"
+              >
+                <LogOut size={24} />
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                title="Your Account"
+                className="text-xl text-black hover:text-blue-500 transition-colors duration-300"
+              >
+                <CircleUserRound size={24} />
+              </Link>
+            )}
           </li>
         </ul>
 
         {/* Mobile Hamburger Menu - Visible only on mobile */}
-        <button 
+        <button
           className="md:hidden text-2xl focus:outline-none"
           onClick={toggleMenu}
         >
@@ -70,8 +110,8 @@ function Header() {
           <div className="absolute top-16 left-0 right-0 bg-rose-400 shadow-lg z-50 md:hidden">
             <ul className="flex flex-col py-4">
               <li className="border-b border-rose-300 last:border-b-0">
-                <a 
-                  href="/about" 
+                <a
+                  href="/about"
                   className="block px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >
@@ -79,8 +119,8 @@ function Header() {
                 </a>
               </li>
               <li className="border-b border-rose-300 last:border-b-0">
-                <a 
-                  href="/contact" 
+                <a
+                  href="/contact"
                   className="block px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >
@@ -88,8 +128,8 @@ function Header() {
                 </a>
               </li>
               <li className="relative border-b border-rose-300 last:border-b-0">
-                <a 
-                  // href="/wishlist" 
+                <a
+                  // href="/wishlist"
                   className="flex items-center justify-between px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >
@@ -98,13 +138,13 @@ function Header() {
                     {/* <span>Wishlist</span> */}
                   </span>
                   <span className="absolute -top-0 left-10 bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
-                    0 
+                    0
                   </span>
                 </a>
               </li>
               <li className="relative border-b border-rose-300 last:border-b-0">
-                <a 
-                  // href="/cart" 
+                <a
+                  // href="/cart"
                   className="flex items-center justify-between px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >
@@ -118,8 +158,8 @@ function Header() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="/login" 
+                <a
+                  href="/login"
                   className="block px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >

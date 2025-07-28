@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound.jsx"
 import SingleProduct from "./pages/SingleProduct.jsx"
 import CartProvider from "./Contexts/CartContext.jsx"
 import Register from "./pages/Register.jsx"
+import AuthProvider from "./Contexts/AuthProvider.jsx"
 // import CartProvider from "./Contexts/CartProvider"
 
 
@@ -64,9 +65,11 @@ const router=createBrowserRouter([
 
 function Router(){
     return (
-        <CartProvider>
-            <RouterProvider router={router}/>
-        </CartProvider>
+        <AuthProvider>
+            <CartProvider>
+                <RouterProvider router={router}/>
+            </CartProvider>
+        </AuthProvider>
     );
 }
 
