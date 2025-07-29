@@ -6,7 +6,7 @@ import { MdLogout } from "react-icons/md";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { AiOutlineHeart } from "react-icons/ai";
 
-import { LogOut, UserRound, CircleUserRound } from "lucide-react"; 
+import { LogOut, UserRound, CircleUserRound } from "lucide-react";
 
 import { Link, useNavigate } from "react-router-dom";
 import { cartContext } from "../Contexts/CartContext";
@@ -107,64 +107,72 @@ function Header() {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="absolute top-16 left-0 right-0 bg-rose-400 shadow-lg z-50 md:hidden">
+          <div className="absolute top-16  right-0 bg-rose-400 shadow-lg z-50 md:hidden w-[130px] h-[250px] overflow-y-auto">
             <ul className="flex flex-col py-4">
               <li className="border-b border-rose-300 last:border-b-0">
-                <a
-                  href="/about"
+                <Link
+                  to="/about"
                   className="block px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li className="border-b border-rose-300 last:border-b-0">
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="block px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >
                   Contact
-                </a>
+                </Link>
               </li>
               <li className="relative border-b border-rose-300 last:border-b-0">
-                <a
-                  // href="/wishlist"
+                <Link
+                  to="/wishlist"
                   className="flex items-center justify-between px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >
                   <span className="flex items-center space-x-2">
                     <AiOutlineHeart className="text-xl" />
-                    {/* <span>Wishlist</span> */}
                   </span>
                   <span className="absolute -top-0 left-10 bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
                     0
                   </span>
-                </a>
+                </Link>
               </li>
               <li className="relative border-b border-rose-300 last:border-b-0">
-                <a
-                  // href="/cart"
+                <Link
+                  to="/cart"
                   className="flex items-center justify-between px-6 py-3 hover:bg-rose-300 transition-colors"
                   onClick={toggleMenu}
                 >
                   <span className="flex items-center space-x-2">
                     <MdOutlineShoppingCart className="text-xl" />
-                    {/* <span>Cart</span> */}
                   </span>
                   <span className="absolute -top-0 left-10 bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
                     {cart.length}
                   </span>
-                </a>
+                </Link>
               </li>
-              <li>
-                <a
-                  href="/login"
-                  className="block px-6 py-3 hover:bg-rose-300 transition-colors"
-                  onClick={toggleMenu}
-                >
-                  Login
-                </a>
+              <li className="border-b border-rose-300 last:border-b-0">
+                {user ? (
+                  <button
+                    onClick={HandleLoggedOut}
+                    title="Logout"
+                    className="text-xl text-black hover:text-red-500 transition-colors duration-300 block px-6 py-1"
+                  >
+                    <LogOut size={24} />
+                  </button>
+                ) : (
+                  <Link
+                    to="/login"
+                    title="Your Account"
+                    className="text-xl text-black hover:text-blue-500 transition-colors duration-300 block px-6 py-3 "
+                  >
+                    <CircleUserRound size={24} />
+                  </Link>
+                )}
               </li>
             </ul>
           </div>
