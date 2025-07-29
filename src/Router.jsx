@@ -12,6 +12,7 @@ import SingleProduct from "./pages/SingleProduct.jsx"
 import CartProvider from "./Contexts/CartContext.jsx"
 import Register from "./pages/Register.jsx"
 import AuthProvider from "./Contexts/AuthProvider.jsx"
+import ProtectedRoute from "./components/ProtectedRoute.jsx"
 // import CartProvider from "./Contexts/CartProvider"
 
 
@@ -35,11 +36,19 @@ const router=createBrowserRouter([
             },
             {
                 path:"/cart",
-                element:<Cart/>
+                element:(
+                    <ProtectedRoute> 
+                        <Cart/> 
+                    </ProtectedRoute>
+                )
             },
             {
                 path:"/WishList",
-                element:<WishList/>
+                element:(
+                    <ProtectedRoute>
+                        <WishList/>
+                    </ProtectedRoute>
+                )
             },
             {
                 path:"/register",
@@ -52,7 +61,11 @@ const router=createBrowserRouter([
             },
             {
                 path:"/product/:id",
-                element:<SingleProduct/>
+                element:(
+                    <ProtectedRoute>
+                        <SingleProduct/>
+                    </ProtectedRoute>
+                )
             },
             {
                 path:"*",
