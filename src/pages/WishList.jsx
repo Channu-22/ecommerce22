@@ -6,4 +6,4 @@ function WishList() {
   )
 }
 
-export default WishList
+export default WishList;

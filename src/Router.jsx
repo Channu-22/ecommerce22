@@ -13,6 +13,7 @@ import CartProvider from "./Contexts/CartContext.jsx"
 import Register from "./pages/Register.jsx"
 import AuthProvider from "./Contexts/AuthProvider.jsx"
 import ProtectedRoute from "./components/ProtectedRoute.jsx"
+import Profile from "./pages/Profile.jsx"
 // import CartProvider from "./Contexts/CartProvider"
 
 
@@ -60,6 +61,14 @@ const router=createBrowserRouter([
                 element:<Login/>
             },
             {
+                path:"/profile",
+                element:(
+                    <ProtectedRoute>
+                        <Profile/>
+                    </ProtectedRoute>
+                )
+            },
+            {
                 path:"/product/:id",
                 element:(
                     <ProtectedRoute>
@@ -67,6 +76,7 @@ const router=createBrowserRouter([
                     </ProtectedRoute>
                 )
             },
+            
             {
                 path:"*",
                 element:<NotFound/>

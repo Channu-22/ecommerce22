@@ -30,7 +30,7 @@ function SingleProduct() {
       setLoading(false);
     }
   }
-  // console.log(product)
+  
  
 
 

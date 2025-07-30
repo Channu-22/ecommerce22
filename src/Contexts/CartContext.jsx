@@ -1,10 +1,17 @@
 import { createContext, useState } from "react";
+import { useAuth } from "./AuthProvider";
 
 export const cartContext = createContext();
 
 function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  
   const [toastMessage, setToastMessage] = useState("");
+
+  
+
+  const { user } = useAuth();
+
 
   function handleAddToCart(product) {
     setCart((prevCart) => {
@@ -58,6 +65,10 @@ function CartProvider({ children }) {
     setCart(updatedCart);
   };
 
+
+   // ✅ Add to wishlist and Firestore
+  
+
   return (
     <cartContext.Provider
       value={{
@@ -67,6 +78,7 @@ function CartProvider({ children }) {
         toastMessage,
         handleQuantityChange,
         handleDeleteItem,
+      
       }}
     >
       {children}

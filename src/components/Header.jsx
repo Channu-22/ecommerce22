@@ -5,6 +5,7 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { AiOutlineHeart } from "react-icons/ai";
+import { FaChevronDown } from "react-icons/fa";
 
 import { LogOut, UserRound, CircleUserRound } from "lucide-react";
 
@@ -17,6 +18,7 @@ import { getAuth } from "firebase/auth";
 const Auth = getAuth(app);
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const { cart } = useContext(cartContext);
 
@@ -25,6 +27,10 @@ function Header() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
   };
 
   function HandleLoggedOut() {
@@ -71,13 +77,13 @@ function Header() {
             </Link>
           </li>
 
-          <li className="cursor-pointer hover:text-white transition-colors">
+          <li className="cursor-pointer  transition-colors">
             {/* <Link to="/login" className="bg-white text-rose-400 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
               Login
             </Link> */}
             {/* import { LogOut, UserRound } from "lucide-react"; */}
 
-            {user ? (
+            {/* {user ? (
               <button
                 onClick={HandleLoggedOut}
                 title="Logout"
@@ -93,6 +99,42 @@ function Header() {
               >
                 <CircleUserRound size={24} />
               </Link>
+            )} */}
+            {user ? (
+              <li className="mr-5 cursor-pointer relative">
+                <div onClick={toggleDropdown} className="flex items-center">
+                  <span className="text-xl text-black hover:text-blue-500 transition-colors duration-300">
+                    <CircleUserRound size={24} />
+                  </span>
+                  <FaChevronDown
+                    className={`text-xl transition-transform duration-300 ${
+                      isDropdownOpen ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </div>
+                {isDropdownOpen && (
+                  <ul className="absolute z-50 right-0 mt-2 bg-rose-400 shadow-md rounded w-25">
+                    <li className="p-2 hover:bg-blue-500">
+                      <Link to={user ? "/profile" : "/login"}>
+                        {user ? "Profile" : "Login"}
+                      </Link>
+                    </li>
+                    <li
+                      className="p-2 hover:bg-blue-500 relative flex items-center gap-2"
+                      onClick={HandleLoggedOut}
+                    >
+                      LogOut{" "}
+                      <button onClick={HandleLoggedOut}>
+                        <MdLogout title="Logout" className="" />
+                      </button>
+                    </li>
+                  </ul>
+                )}
+              </li>
+            ) : (
+              <li className="bg-white text-rose-400 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                <Link to="/login">Login</Link>
+              </li>
             )}
           </li>
         </ul>
@@ -107,7 +149,7 @@ function Header() {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="absolute top-16  right-0 bg-rose-400 shadow-lg z-50 md:hidden w-[130px] h-[250px] overflow-y-auto">
+          <div className="absolute top-16  right-0 bg-rose-400 shadow-lg z-50 md:hidden w-[130px] h-[330px] overflow-y-auto">
             <ul className="flex flex-col py-4">
               <li className="border-b border-rose-300 last:border-b-0">
                 <Link
@@ -148,7 +190,7 @@ function Header() {
                   onClick={toggleMenu}
                 >
                   <span className="flex items-center space-x-2">
-                    <MdOutlineShoppingCart className="text-xl" />
+                    <MdOutlineShoppingCart className="text-xl"  />
                   </span>
                   <span className="absolute -top-0 left-10 bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
                     {cart.length}
@@ -157,21 +199,40 @@ function Header() {
               </li>
               <li className="border-b border-rose-300 last:border-b-0">
                 {user ? (
-                  <button
-                    onClick={HandleLoggedOut}
-                    title="Logout"
-                    className="text-xl text-black hover:text-red-500 transition-colors duration-300 block px-6 py-1"
-                  >
-                    <LogOut size={24} />
-                  </button>
+                  <li className="mr-5 cursor-pointer relative">
+                    <div onClick={toggleDropdown} className="flex items-center">
+                      <span className="text-xl text-black hover:text-blue-500 transition-colors duration-300 px-6 py-3">
+                        <CircleUserRound size={24} />
+                      </span>
+                      <FaChevronDown
+                        className={`text-xl transition-transform duration-300 ${
+                          isDropdownOpen ? "rotate-180" : "rotate-0"
+                        }`}
+                      />
+                    </div>
+                    {isDropdownOpen && (
+                      <ul className="absolute z-50 right-0 mt-2 bg-rose-400 shadow-md rounded w-25">
+                        <li className="p-2 hover:bg-blue-500">
+                          <Link to={user ? "/profile" : "/login"}>
+                            {user ? "Profile" : "Login"}
+                          </Link>
+                        </li>
+                        <li
+                          className="p-2 hover:bg-rose-400 relative flex items-center gap-2"
+                          onClick={HandleLoggedOut}
+                        >
+                          LogOut{" "}
+                          <button onClick={HandleLoggedOut}>
+                            <MdLogout title="Logout" className="" />
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
                 ) : (
-                  <Link
-                    to="/login"
-                    title="Your Account"
-                    className="text-xl text-black hover:text-blue-500 transition-colors duration-300 block px-6 py-3 "
-                  >
-                    <CircleUserRound size={24} />
-                  </Link>
+                  <li className="bg-white text-rose-400 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    <Link to="/login">Login</Link>
+                  </li>
                 )}
               </li>
             </ul>
