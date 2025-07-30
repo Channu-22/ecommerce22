@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import app from "../firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const auth = getAuth(app);
 
@@ -15,7 +15,7 @@ function Register() {
     type: "",
     text: "",
   });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -31,6 +31,9 @@ function Register() {
       );
       const user = userDetails.user;
       setMessage({ type: "success", text: "Account created successfully! 🎉" });
+      setTimeout(() => {
+        navigate("/login")
+      },1500);
     } catch (error) {
       setMessage({ type: "error", text: error.message });
     }
