@@ -14,6 +14,7 @@ import Register from "./pages/Register.jsx"
 import AuthProvider from "./Contexts/AuthProvider.jsx"
 import ProtectedRoute from "./components/ProtectedRoute.jsx"
 import Profile from "./pages/Profile.jsx"
+import MyOrders from "./pages/MyOrders.jsx"
 // import CartProvider from "./Contexts/CartProvider"
 
 
@@ -67,6 +68,14 @@ const router=createBrowserRouter([
                         <Profile/>
                     </ProtectedRoute>
                 )
+            },
+            {
+                path:"/orders",
+                element:(
+                    <MyOrders/>
+                )
+
+
             },
             {
                 path:"/product/:id",

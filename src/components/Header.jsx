@@ -20,7 +20,7 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const { cart } = useContext(cartContext);
+  const { cart, wishlist } = useContext(cartContext);
 
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -49,9 +49,9 @@ function Header() {
 
         {/* Desktop Navigation - Hidden on mobile */}
         <ul className="hidden md:flex items-center space-x-8">
-          {/* <li className="cursor-pointer hover:text-white transition-colors">
+          <li className="cursor-pointer hover:text-white transition-colors">
             <Link to="/">Home</Link>
-          </li> */}
+          </li>
           <li className="cursor-pointer hover:text-white transition-colors">
             <Link to="/about">About</Link>
           </li>
@@ -63,7 +63,7 @@ function Header() {
             <Link to="/wishlist" className="relative flex items-center">
               <AiOutlineHeart title="Your Wishlist" className="text-2xl" />
               <span className="absolute -top-3 -right-3 bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
-                0
+                {wishlist.length}
               </span>
             </Link>
           </li>
@@ -119,6 +119,11 @@ function Header() {
                         {user ? "Profile" : "Login"}
                       </Link>
                     </li>
+                    <li className="p-2 hover:bg-blue-500">
+                      <Link to={user ? "/orders" : "/login"}>
+                        {user ? "MyOrders" : "Login"}
+                      </Link>
+                    </li>
                     <li
                       className="p-2 hover:bg-blue-500 relative flex items-center gap-2"
                       onClick={HandleLoggedOut}
@@ -151,6 +156,18 @@ function Header() {
         {isMenuOpen && (
           <div className="absolute top-16  right-0 bg-rose-400 shadow-lg z-50 md:hidden w-[130px] h-[330px] overflow-y-auto">
             <ul className="flex flex-col py-4">
+              {/* <li className="cursor-pointer hover:text-white transition-colors">
+            <Link to="/">Home</Link>
+          </li> */}
+              <li className="border-b border-rose-300 last:border-b-0">
+                <Link
+                  to="/"
+                  className="block px-6 py-3 hover:bg-rose-300 transition-colors"
+                  onClick={toggleMenu}
+                >
+                  Home
+                </Link>
+              </li>
               <li className="border-b border-rose-300 last:border-b-0">
                 <Link
                   to="/about"
@@ -179,7 +196,7 @@ function Header() {
                     <AiOutlineHeart className="text-xl" />
                   </span>
                   <span className="absolute -top-0 left-10 bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
-                    0
+                    {wishlist.length}
                   </span>
                 </Link>
               </li>
@@ -190,7 +207,7 @@ function Header() {
                   onClick={toggleMenu}
                 >
                   <span className="flex items-center space-x-2">
-                    <MdOutlineShoppingCart className="text-xl"  />
+                    <MdOutlineShoppingCart className="text-xl" />
                   </span>
                   <span className="absolute -top-0 left-10 bg-white text-rose-400 font-bold rounded-full w-5 h-5 flex justify-center items-center text-xs">
                     {cart.length}
@@ -215,6 +232,11 @@ function Header() {
                         <li className="p-2 hover:bg-blue-500">
                           <Link to={user ? "/profile" : "/login"}>
                             {user ? "Profile" : "Login"}
+                          </Link>
+                        </li>
+                        <li className="p-2 hover:bg-blue-500">
+                          <Link to={user ? "/orders" : "/login"}>
+                            {user ? "MyOrders" : "Login"}
                           </Link>
                         </li>
                         <li

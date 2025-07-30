@@ -11,7 +11,7 @@ function SingleProduct() {
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const {handleAddToCart, toastMessage} = useContext(cartContext)
+  const {handleAddToCart, addToWishlist, toastMessage} = useContext(cartContext)
   
   // console.log(id)
   useEffect(() => {
@@ -126,7 +126,8 @@ function SingleProduct() {
             </button>
             {toastMessage && <Toast message={toastMessage} />}
 
-            <button className="cursor-pointer bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            <button className="cursor-pointer bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            onClick={() => addToWishlist(product)}>
               Add to Wishlist
             </button>
           </div>
