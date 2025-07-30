@@ -132,7 +132,7 @@ function Header() {
                 )}
               </li>
             ) : (
-              <li className="bg-white text-rose-400 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              <li className="bg-white text-rose-400   px-4 py-2 rounded-lg font-semibold hover:bg-black hover:text-white transition-colors">
                 <Link to="/login">Login</Link>
               </li>
             )}
@@ -230,7 +230,7 @@ function Header() {
                     )}
                   </li>
                 ) : (
-                  <li className="bg-white text-rose-400 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                  <li className="bg-white text-rose-400 px-4 py-2 mt-4 ml-4 w-[70px] rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                     <Link to="/login">Login</Link>
                   </li>
                 )}
