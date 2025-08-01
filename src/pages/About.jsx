@@ -1,63 +1,40 @@
 function About() {
   return (
-    <div className="bg-gray-100 min-h-screen overflow-hidden flex items-center justify-center p-6">
-      <div className="max-w-4xl w-full bg-white rounded-2xl shadow-lg p-8 overflow-hidden">
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+      <div className="max-w-3xl w-full bg-white rounded-2xl shadow-lg p-8">
         <h1 className="text-4xl font-bold text-rose-500 mb-6">About Us</h1>
+
         <p className="text-gray-700 mb-4">
-          Welcome to <span className="font-bold text-rose-400">Ecommerce</span>,
-          your one-stop destination for all your shopping needs. We are
-          dedicated to providing you with the best products, focusing on
-          quality, customer service, and reliability.
-        </p>
-        <p className="text-gray-700 mb-4">
-          Founded in 2025,{" "}
-          <span className="font-bold text-rose-400">Ecommerce</span> has come a
-          long way from its beginnings. Our mission is to make online shopping
-          easy, accessible, and enjoyable for everyone. Whether you're looking
-          for the latest gadgets, trendy fashion, or everyday essentials, we've
-          got you covered.
-        </p>
-        <p className="text-gray-700 mb-4">
-          At <span className="font-bold text-rose-400">Ecommerce</span>, we
-          believe in building lasting relationships with our customers. Your
-          satisfaction is our top priority, and we strive to exceed your
-          expectations with every purchase.
+          Welcome to <span className="font-bold text-rose-400">Ecommerce</span> — your ultimate online shopping hub! We bring you top-quality products with unbeatable service, all in one place.
         </p>
 
-        <h2 className="text-2xl font-bold text-rose-500 mt-6 mb-4">
-          Our Values
-        </h2>
+        <p className="text-gray-700 mb-4">
+          Launched in 2025, our mission is simple: make shopping effortless, fun, and reliable. From trending fashion to daily essentials, we’ve got it all.
+        </p>
+
+        <p className="text-gray-700 mb-4">
+          We value your trust and strive to make every purchase a great experience. Your satisfaction is our priority.
+        </p>
+
+        <h2 className="text-2xl font-bold text-rose-500 mt-6 mb-4">Why Choose Us?</h2>
         <ul className="list-disc list-inside text-gray-700 space-y-2">
-          <li>
-            Customer Satisfaction: We put our customers first in everything we
-            do.
-          </li>
-          <li>
-            Quality Products: We ensure that every product meets the highest
-            standards.
-          </li>
-          <li>
-            Innovation: We embrace change and continuously improve our services.
-          </li>
-          <li>
-            Integrity: We are committed to honesty and transparency in all our
-            dealings.
-          </li>
+          <li>Top-notch quality</li>
+          <li>Customer-first approach</li>
+          <li>Fast & reliable delivery</li>
+          <li>Honesty in everything we do</li>
         </ul>
 
-        <h2 className="text-2xl font-bold text-rose-500 mt-6 mb-4">
-          Contact Us
-        </h2>
+        <h2 className="text-2xl font-bold text-rose-500 mt-6 mb-4">Get in Touch</h2>
         <p className="text-gray-700">
-          Have questions or feedback? We'd love to hear from you! Reach out to
-          us at{" "}
+          Got questions or feedback? We’re here for you! 📞{" "}
+          <span className="font-bold">+91 93226 05251</span> <br />
+          📧{" "}
           <a
-            href="mailto:support@ecommerce.com"
+            href="mailto:channusinnur22072002@gmail.com"
             className="text-blue-500 underline"
           >
-            support@ecommerce.com
-          </a>{" "}
-          or call us at <span className="font-bold">+1-800-123-4567</span>.
+            channusinnur22072002@gmail.com
+          </a>
         </p>
       </div>
     </div>

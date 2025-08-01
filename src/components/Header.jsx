@@ -19,6 +19,7 @@ const Auth = getAuth(app);
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // const[loggedOutMsg, setLoggedOutMsg] =useState("");
 
   const { cart, wishlist } = useContext(cartContext);
 
@@ -35,27 +36,26 @@ function Header() {
 
   function HandleLoggedOut() {
     Auth.signOut();
-    setTimeout(() => {
-      navigate("/login");
-    }, 1000);
+    
+    navigate("/login")
   }
 
   return (
     <>
       <header className="bg-rose-400 h-16 px-6 md:px-12 flex justify-between items-center relative">
-        <h1 className="font-bold text-2xl md:text-3xl">
-          <Link to="/">🛍️Ecommerce</Link>
+        <h1 className="font-bold text-2xl md:text-3xl ">
+          <Link to="/">🛍️<span className="hover:underline">Ecommerce</span></Link>
         </h1>
 
         {/* Desktop Navigation - Hidden on mobile */}
         <ul className="hidden md:flex items-center space-x-8">
-          <li className="cursor-pointer hover:text-white transition-colors">
+          <li className="cursor-pointer  hover:underline  transition-colors">
             <Link to="/">Home</Link>
           </li>
-          <li className="cursor-pointer hover:text-white transition-colors">
+          <li className="cursor-pointer hover:underline transition-colors">
             <Link to="/about">About</Link>
           </li>
-          <li className="cursor-pointer hover:text-white transition-colors">
+          <li className="cursor-pointer hover:underline transition-colors">
             <Link to="/contact">Contact</Link>
           </li>
 
@@ -130,7 +130,7 @@ function Header() {
                     >
                       LogOut{" "}
                       <button onClick={HandleLoggedOut}>
-                        <MdLogout title="Logout" className="" />
+                        <MdLogout title="Logout" className="text-xl" />
                       </button>
                     </li>
                   </ul>

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import Toast from "../messages/Cartmsg";
 import { useAuth } from "../Contexts/AuthProvider";
-// import DeleteToast from "../messages/Deletemsg";
+
 
 function Cart() {
   const {
@@ -18,13 +18,12 @@ function Cart() {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  // Toast message states
+  // Toast message 
   const [increaseMessage, setIncreaseMessage] = useState("");
   const [decreaseMessage, setDecreaseMessage] = useState("");
   const [deleteMessage, setDeleteMessage] = useState("");
 
-  const [Loading, setLoading] = useState(true);
-
+  
   // Handle quantity increase with toast message
   const handleIncreaseWithMessage = (itemId) => {
     const item = cart.find((item) => item.id === itemId);

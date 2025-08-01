@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import instance from "../axiosConfig"
 import { Link } from "react-router-dom";
-
-
+// import axios from "axios";
 
 function Products() {
     const [products, setProducts] = useState([]);
@@ -15,7 +14,8 @@ function Products() {
     async function getdata() {
         try {
             setLoading(true);
-            const response = await instance.get("/products?limit=150");
+            const response = await instance.get("/products");
+            // console.log(response)
             setProducts(response.data);
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -23,6 +23,7 @@ function Products() {
             setLoading(false);
         }
     }
+    // console.log(products)
 
     if (loading) {
         return (
@@ -124,18 +125,7 @@ function Products() {
                                             </span>
                                         </div>
 
-                                        {/* <button className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300 transform hover:scale-105 shadow-lg hover:shadow-xl group relative overflow-hidden">
-                                            <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                                            <span className="relative flex items-center justify-center space-x-3">
-                                                <svg className="w-5 h-5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
-                                                    <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.44C5.04 14.29 5 14.63 5 15c0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25L7.27 14H15.55c.75 0 1.42-.41 1.75-1.03L21.7 4H5.21L4.27 2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-                                                </svg>
-                                                <span className="font-semibold tracking-wide">Add to Cart</span>
-                                                <svg className="w-4 h-4 fill-current transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24">
-                                                    <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6-6 6-1.41-1.41z"/>
-                                                </svg>
-                                            </span>
-                                        </button> */}
+                                       
                                     </div>
                                 </div>
                             )

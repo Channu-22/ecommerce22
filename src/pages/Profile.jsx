@@ -74,7 +74,7 @@ function Profile() {
 
         {/* Form Container */}
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-6">
+          <div className="bg-rose-400 px-8 py-6">
             <h2 className="text-2xl font-semibold text-white">Profile Details</h2>
             <p className="text-blue-100 mt-1">Keep your information up to date</p>
           </div>
@@ -214,7 +214,7 @@ function Profile() {
                 type="submit"
                 disabled={isUpdating}
                 onClick={handleSubmit}
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-4 px-6 rounded-xl hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none cursor-pointer"
+                className="w-full text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 font-semibold py-4 px-6 rounded-xl hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none cursor-pointer"
               >
                 {isUpdating ? (
                   <span className="flex items-center justify-center">

@@ -3,113 +3,73 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-rose-400 text-white py-8 px-4 sm:px-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-rose-400 text-black py-10 px-6">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         {/* Brand Info */}
-        <div className="text-center md:text-left">
-          <h3 className="text-2xl font-bold mb-4 transform transition-transform duration-300 hover:scale-105">
-            Ecommerce
+        <div>
+          <h3 className="text-2xl font-bold mb-2 hover:scale-105 transition-transform">
+            🛍️Ecommerce
           </h3>
-          <p className="text-sm mb-4">
-            Your one-stop shop for quality products and seamless shopping experiences.
-          </p>
           <p className="text-sm">
-            &copy; {new Date().getFullYear()} Ecommerce. All rights reserved.
+            Quality products, seamless shopping. Since 2025.
           </p>
         </div>
 
         {/* Quick Links */}
-        <div className="text-center">
-          <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-          <ul className="space-y-2">
-            <li>
-              <Link
-                href="/about" 
-                className="hover:text-rose-200 transition-colors duration-200 hover:underline"
-              >
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/" 
-                className="hover:text-rose-200 transition-colors duration-200 hover:underline"
-              >
-                Shop
-              </Link>
-            </li>
-            <li>
-              <Link 
-                href="/contact" 
-                className="hover:text-rose-200 transition-colors duration-200 hover:underline"
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <a 
-                href="/faq" 
-                className="hover:text-rose-200 transition-colors duration-200 hover:underline"
-              >
-                FAQ
-              </a>
-            </li>
+        <div>
+          <h4 className="text-lg font-semibold mb-2">Quick Links</h4>
+          <ul className="space-y-1 text-sm">
+            <li><Link to="/about" className="hover:underline text-black">About</Link></li>
+            <li><Link to="/" className="hover:underline text-black">Shop</Link></li>
+            <li><Link to="/contact" className="hover:underline text-black">Contact</Link></li>
+            <li><a href="/faq" className="hover:underline text-black">FAQ</a></li>
           </ul>
         </div>
 
-        {/* Social Media Icons */}
-        <div className="text-center md:text-right">
-          <h4 className="text-lg font-semibold mb-4">Stay Connected</h4>
-          <div className="flex justify-center md:justify-end gap-4 mt-4">
-            <a 
-              href="https://instagram.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              title="instagram"
-              className="transform transition-transform duration-200 hover:scale-125 hover:text-rose-200"
-            >
-              <FaInstagram size={24} />
+        {/* Socials */}
+        <div>
+          <h4 className="text-lg font-semibold mb-2">Connect With Us</h4>
+          <div className="flex justify-center md:justify-start gap-4 mt-2 text-white">
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-rose-200">
+              <FaInstagram size={22} />
             </a>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              title="linkedn"
-              className="transform transition-transform duration-200 hover:scale-125 hover:text-rose-200"
-            >
-              <FaLinkedin size={24} />
+            <a href="https://linkedin.com/in/chanabasappa-sinnur-826414246" target="_blank" rel="noreferrer" className="hover:text-rose-200">
+              <FaLinkedin size={22} />
             </a>
-            <div className="relative group">
-              <a 
-                href="https://github.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                title="github"
-                className="transform transition-transform duration-200 hover:scale-125 hover:text-rose-200"
-              >
-                <FaGithub size={24} />
-              </a>
-              <span className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                GitHub
-              </span>
-            </div>
+            <a href="https://github.com/Channu-22/" target="_blank" rel="noreferrer" className="hover:text-rose-200">
+              <FaGithub size={22} />
+            </a>
           </div>
+          <p className="mt-4 text-sm">
+            📞{" "}
+            <a href="tel:9322605251" className="text-black hover:underline">
+              9322605251
+            </a>
+          </p>
+          <p className="text-sm">
+            📧{" "}
+            <a href="mailto:channusinnur22072002@gmail.com" className="text-black hover:underline">
+              channusinnur22072002@gmail.com
+            </a>
+          </p>
         </div>
       </div>
 
-      {/* Credits */}
-      <div className="mt-8 text-center border-t border-rose-300 pt-4">
-        <p className="text-sm">
-          Made with <FaHeart className="inline-block text-rose-200 transform transition-transform duration-200 hover:scale-125" /> by
+      {/* Bottom Credits */}
+      <div className="mt-8 border-t border-rose-300 pt-4 text-center text-sm text-black">
+        <p>
+          Made with{" "}
+          <FaHeart className="inline-block text-rose-600 hover:scale-110 transition-transform" /> by{" "}
           <a
             href="https://www.linkedin.com/in/chanabasappa-sinnur-826414246/"
-            className="text-rose-200 underline ps-2 hover:text-white transition-colors duration-200"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noreferrer"
+            className="underline hover:text-black"
           >
             Chanabasappa Sinnur
           </a>
         </p>
+        <p className="mt-1">&copy; {new Date().getFullYear()} Ecommerce. All rights reserved.</p>
       </div>
     </footer>
   );

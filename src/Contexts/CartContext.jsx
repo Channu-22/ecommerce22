@@ -10,6 +10,7 @@ function CartProvider({ children }) {
   const [wishlist, setWishlist] = useState([]);
   
   const [toastMessage, setToastMessage] = useState("");
+  // const [messageWishList, setMessageWishList] = useState("");
 
   
 
@@ -45,7 +46,7 @@ function CartProvider({ children }) {
       </div>
     );
   }
-
+  
   //  ADDING QUANTITY 
   const handleQuantityChange = (productId, type) => {
     const updatedCart = cart.map((item) => {
@@ -90,14 +91,17 @@ function CartProvider({ children }) {
     setWishlist((prev) => {
       const exists = prev.some((item) => item.id === product.id);
       if (exists) {
+        setToastMessage(`${product.category} added to WishList`);
         // showTemporaryMessage("✅ Item already in wishlist.");
         return prev;
       }
 
       // addItemToFirestore("wishlist", user, product);
       // showTemporaryMessage("✅ Added to wishlist.");
+      setToastMessage(`${product.category} added to WishList`);
       return [...prev, product];
     });
+    setTimeout(() => setToastMessage(""), 2000);
   };
   
 
