@@ -1,24 +1,14 @@
 <!-- Project Banner -->
-<p align="center">
-  <img src="Ecommerce.png" alt="Ecommerce Project Banner" />
-</p>
-
 # 🛍️ Ecommerce Web Application
 
 A fully responsive ecommerce platform with user authentication, cart management, order placement, and order history. Built using modern web technologies and Firebase as the backend.
 
 ---
-
-## 🔑 Features
-
-- 🔒 **User Authentication** (Sign up, Login, Logout)
-- 🛒 **Add/Remove Items** to/from the Cart
-- 📦 **Place Orders**
-- 🕒 **View Order History**
-- 📱 **Responsive Design** for Mobile and Desktop
+<p align="center">
+  <img src="Ecommerce.png" alt="Ecommerce Project Banner" />
+</p>
 
 ---
-
 ## 💻 Technologies Used
 
 - ⚛️ **React** – Front-end library
@@ -30,9 +20,13 @@ A fully responsive ecommerce platform with user authentication, cart management,
 
 ---
 
-## 📸 Screenshot
+## 🔑 Features
 
-> ![alt text](public/Ecommerce.png)
+- 🔒 **User Authentication** (Sign up, Login, Logout)
+- 🛒 **Add/Remove Items** to/from the Cart
+- 📦 **Place Orders**
+- 🕒 **View Order History**
+- 📱 **Responsive Design** for Mobile and Desktop
 
 ---
 
