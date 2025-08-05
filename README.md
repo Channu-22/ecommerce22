@@ -8,27 +8,31 @@ A fully responsive ecommerce platform with user authentication, cart management,
   <img src="Ecommerce.png" alt="Ecommerce Project Banner" />
 </p>
 
+
 ---
+
 ## 💻 Technologies Used
 
 - ⚛️ **React** – Front-end library
-- 🚦 **React Router** – Page routing/navigation
 - 🛠️ **Context API** – For global state management
 - 🌐 **Axios** – For API requests
 - 💅 **Styled-components** – For component-level styling
 - 🔥 **Firebase** – Backend & Authentication
+- 📝 **React Hook Form** – For form validation and handling
 
 ---
 
 ## 🔑 Features
 
 - 🔒 **User Authentication** (Sign up, Login, Logout)
-- 🛒 **Add/Remove Items** to/from the Cart
+- 🛒 **Add/Remove Items** to/from the **Cart** and **WishList**
 - 📦 **Place Orders**
 - 🕒 **View Order History**
+- ✉️ **Feedback Form** using React Hook Form
 - 📱 **Responsive Design** for Mobile and Desktop
 
 ---
+
 
 ## 🚀 Getting Started
 
