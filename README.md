@@ -32,7 +32,7 @@ A fully responsive ecommerce platform with user authentication, cart management,
 
 ## 📸 Screenshot
 
-> Add a screenshot of your live app or UI preview here if needed.
+> ![alt text](public/Ecommerce.png)
 
 ---
 
