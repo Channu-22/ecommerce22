@@ -1,66 +1,44 @@
-<!-- import { createContext, useState } from "react";
+<!-- Project Banner -->
+<p align="center">
+  <img src="Ecommerce.png" alt="Ecommerce Project Banner" />
+</p>
 
-export const cartContext = createContext();
+# 🛍️ Ecommerce Web Application
 
-function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
-  const [toastMessage, setToastMessage] = useState('');
+A fully responsive ecommerce platform with user authentication, cart management, order placement, and order history. Built using modern web technologies and Firebase as the backend.
 
-  function handleAddToCart(product) {
-    setCart((prevCart) => {
-      const existingProduct = prevCart.find((item) => item.id === product.id);
+---
 
-      if (existingProduct) {
-        setToastMessage(`${product.category} added to cart`);
-        return prevCart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      } else {
-        setToastMessage(`${product.category} added to cart`);
-        return [...prevCart, { ...product, quantity: 1 }];
-      }
-    });
+## 🔑 Features
 
-    // Auto-hide toast after 2 seconds
-    setTimeout(() => setToastMessage(''), 2000);
-  }
-  function Toast({ message }) {
-    return (
-       <div className="fixed top-6 right-6 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-bounce">
-         {message}
-      </div>
-    );
-  }
+- 🔒 **User Authentication** (Sign up, Login, Logout)
+- 🛒 **Add/Remove Items** to/from the Cart
+- 📦 **Place Orders**
+- 🕒 **View Order History**
+- 📱 **Responsive Design** for Mobile and Desktop
 
-  const handleQuantityChange = (productId, type) => {
-    const updatedCart = cart.map((item) => {
-      if (item.id === productId) {
-        if (type === "increment") {
-          return { ...item, quantity: item.quantity + 1 };
-        } else if (type === "decrement" && item.quantity > 1) {
-          return { ...item, quantity: item.quantity - 1 };
-        }
-      }
-      return item;
-    });
+---
 
-    setCart(updatedCart);
-  };
+## 💻 Technologies Used
 
-  const handleDeleteItem=(itemToDelete) => {
-    const updatedCart=cart.filter(item => itemToDelete !== item.id);
-    setCart(updatedCart);
-  };
+- ⚛️ **React** – Front-end library
+- 🚦 **React Router** – Page routing/navigation
+- 🛠️ **Context API** – For global state management
+- 🌐 **Axios** – For API requests
+- 💅 **Styled-components** – For component-level styling
+- 🔥 **Firebase** – Backend & Authentication
 
+---
 
+## 📸 Screenshot
 
-  return (
-    <cartContext.Provider value={{ cart, setCart, handleAddToCart, toastMessage ,handleQuantityChange,handleDeleteItem }}>
-      {children}
-    </cartContext.Provider>
-  );
-}
+> Add a screenshot of your live app or UI preview here if needed.
 
-export default CartProvider; -->
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/ecommerce-app.git
+cd ecommerce-app
